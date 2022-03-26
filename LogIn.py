@@ -1,6 +1,14 @@
 from tkinter import *
 import sqlite3 as sql
 import os
+import pyttsx3
+
+
+def text_to_speech(user_text):
+    engine = pyttsx3.init()
+    engine.say(user_text)
+    engine.runAndWait()
+
 
 
 root = Tk()
@@ -35,6 +43,7 @@ label = Label(root)
 label.pack()
 
 
+
 def login(event=None):
     connectDB()
     if USERNAME.get() == "" or PASSWORD.get() == "":
@@ -42,10 +51,12 @@ def login(event=None):
     else:
         c.execute("SELECT * FROM `Student` WHERE `username` = ? AND `password` = ?", (USERNAME.get(), PASSWORD.get()))
         if c.fetchone() is not None:
-            # HomeWindow0()
+            text_to_speech('Authentication Successful!')
             USERNAME.set("")
             PASSWORD.set("")
-            login_lbl.config(text="Logged In" , fg="red")
+            root.quit()
+            os.system('python HomeScreen.py')
+            # login_lbl.config(text="Logged In" , fg="red")
         else:
             login_lbl.config(text="Invalid username or password", fg="#fa2205")
             USERNAME.set("")

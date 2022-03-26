@@ -15,7 +15,7 @@ def findEncoding(images):
 
 
 def markAttendence(name):
-    with open('PSC-Project/Attendence.csv' , 'r+') as f:
+    with open('Attendence.csv' , 'r+') as f:
         dataList = f.readlines()
         nameList = []
         for line in dataList:
@@ -29,7 +29,7 @@ def markAttendence(name):
 
 
 
-path = 'PSC-Project/ImagesProject'
+path = 'ImagesProject/Musk'
 images = []
 className = []
 myList = os.listdir(path)
