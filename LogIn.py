@@ -50,6 +50,8 @@ def login(event=None):
             text_to_speech('Authencation Successful')
             USERNAME.set("")
             PASSWORD.set("")
+            root.quit()
+            os.system("python HomeScreen.py")
             # login_lbl.config(text="Logged In" , fg="red")
         else:
             login_lbl.config(text="Invalid username or password", fg="#fa2205")
