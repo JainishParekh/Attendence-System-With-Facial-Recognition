@@ -52,7 +52,7 @@ SeeAtt_lbl.place(x=980, y=335)
 
 def addNewStudent():
     text_to_speech("Add new student selected ")
-    # os.system('python AddNewStudent.py')
+    os.system('python AddNewStudent.py')
 
 def TakeAttendence():
     text_to_speech("Take Attendence Selected")
