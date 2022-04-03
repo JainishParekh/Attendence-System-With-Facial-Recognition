@@ -15,7 +15,7 @@ def findEncoding(images):
 
 
 def markAttendence(name):
-    with open('PSC-Project/Attendence.csv' , 'r+') as f:
+    with open('Attendence.csv', 'r+') as f:
         dataList = f.readlines()
         nameList = []
         for line in dataList:
@@ -27,9 +27,7 @@ def markAttendence(name):
             f.writelines(f'\n{name},{dateStr}')
 
 
-
-
-path = 'PSC-Project/ImagesProject'
+path = 'ImagesProject'
 images = []
 className = []
 myList = os.listdir(path)
@@ -37,11 +35,13 @@ myList = os.listdir(path)
 print(myList)
 
 for cls in myList:
-    curImg = cv2.imread(f'{path}/{cls}')
-    images.append(curImg)
-    className.append(os.path.splitext(cls)[0])
+    myImg = os.listdir(path + '/' + cls)
+    for img in myImg:
+        curImg = cv2.imread(f'{path}/{cls}/{img}')
+        images.append(curImg)
+        className.append(os.path.splitext(img)[0])
 
-encodeListKnown = findEncoding(images)
+    encodeListKnown = findEncoding(images)
 
 # print(encodeListKnown)
 
